@@ -24,14 +24,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date?", function (req, res) {
-  let dateInput = req.params.date || new Date(); // If no date provided, use current time
+  let dateInput = req.params.date;
 
-  // Check if the dateInput is a valid date or a timestamp
   if (!dateInput) {
     dateInput = new Date();
   } else {
     dateInput = isNaN(dateInput) ? dateInput : parseInt(dateInput);
   }
+
+  let parsedDate = new Date(dateInput);
+
   if (parsedDate.toString() === "Invalid Date") {
     res.json({ error: "Invalid Date" });
   } else {
