@@ -23,6 +23,7 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
+// Handle date-related requests
 app.get("/api/:date?", function (req, res) {
   let dateInput = req.params.date;
 
